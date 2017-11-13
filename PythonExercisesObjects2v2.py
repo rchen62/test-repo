@@ -63,7 +63,9 @@ class InstrumentSpec2:
         self.backwood = backWood
         self.topwood = topWood
 
-
+    def __repr__(self):
+        formatstr = 'builder: {} \n model : {} \n gtype : {} \n backwood : {} \n topwood : {}'
+        return (formatstr.format(self.builder, self.model, self.gtype, self.backwood, self.topwood))
 
 
 class Instrument:
@@ -141,7 +143,7 @@ def initInventory():
     initinv.add_item(Mandolin("11277", 5495.99, "GIBSON", "F-5G", "ACOUSTIC", "MAPLE", "MAPLE"))
     '''
 
-    initinv.add_item(Instrument("Guitar","11277", 3999.95, InstrumentSpec(6, "COLLINGS", "CJ", "ACOUSTIC", "INDIAN_ROSEWOOD", "SITKA")))
+    #initinv.add_item(Instrument("Guitar","11277", 3999.95, InstrumentSpec(6, "COLLINGS", "CJ", "ACOUSTIC", "INDIAN_ROSEWOOD", "SITKA")))
     initinv.add_item(Instrument("Mandolin","11277", 5495.99, InstrumentSpec2("GIBSON", "F-5G", "ACOUSTIC", "MAPLE", "MAPLE")))
 
     return initinv
@@ -149,11 +151,14 @@ def initInventory():
 
 inv = initInventory()
 #custG = Guitar(serialNumber=None, Price=None, builder="GIBSON", model=None, gType=None, numStrings=None, topWood=None,backWood=None)
-#custI = Instrument(builder="GIBSON", model=None, gType=None, topWood=None, backWood=None)
-print(inv)
+spec2 = InstrumentSpec2(builder="GIBSON", model=None, gType=None, topWood=None, backWood=None)
+custI = Instrument(None, None, None, InstrumentSpec2("GIBSON", None, None, None, None))
+#custI = Instrument(category=None, serialNumber=None, Price=None, spec2)
+#custI = Instrument("Mandolin","11277", 5495.99, InstrumentSpec2("GIBSON", "F-5G", "ACOUSTIC", "MAPLE", "MAPLE"))
+print(custI)
+#print(inv)
 #inv.search(custI)
-# inv.search()
-# inv.getInstrument("Guitar","11277")
+#inv.getInstrument("Guitar","11277")
 
 
 
